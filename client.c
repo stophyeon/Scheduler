@@ -107,7 +107,7 @@ int main(int argc, char *argv[]) {
             fprintf(stderr, "select() failed. (%d)\n", GETSOCKETERRNO());
             return 1;
         }
-        
+        send();
     } 
     
     printf("Closing socket...\n");

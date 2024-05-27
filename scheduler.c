@@ -30,7 +30,7 @@ typedef struct {
 Process client_processes[MAX_CLIENTS];
 int client_count = 0;
 
-void add_client_process(int pid) {
+void add_client_process(pid_t pid) {
     client_processes[client_count].process_id = pid;
     client_processes[client_count].arrival_time = time(NULL); // 도착 시간
     client_processes[client_count].burst_time = rand() % 10 + 1; // 임의의 실행 시간
@@ -123,7 +123,7 @@ int main() {
                     
                     char pid[1024];
                     read(socket_client, pid, 1024);
-                    add_client_process(atoi(pid));
+                    add_client_process((pid_t)atoi(pid));
                     printf("클라이언트의 PID: %s\n", pid);
                 } else {
                     char read[1024];
